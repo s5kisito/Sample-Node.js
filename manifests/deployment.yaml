@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: samplenodejsapp
+  labels:
+    app: samplenodejsapp
+    kubernetes.azure.com/generator: devhub
+  namespace: namespace-workflow-1728767098045
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: samplenodejsapp
+  template:
+    metadata:
+      labels:
+        app: samplenodejsapp
+    spec:
+      containers:
+        - name: samplenodejsapp
+          image: acrworkflow1728767098045.azurecr.io/image-workflow-1728767098045:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
